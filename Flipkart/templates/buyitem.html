@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Checkout - Buy Now</title>
+        <link rel="stylesheet" href="{% static 'buynow.css' %}">
+    </head>
+    <body>
+       
+        <main class="checkout">
+            <div class="product">
+                <h2>Product Details</h2>
+                <div class="product-info">
+                    <img src="{{cart.product.image}}" alt="Product Image" class="product-image">
+                    <div class="details">
+                        <h3>Product Name : {{cart.product.name}}</h3>
+                        <b>Product Price :</b><b  id="price">{{cart.product.price}}</b> <br>
+                        <p></p>
+                        <b>Product Quantity :</b><b id="quantity">{{cart.quantity}}</b> <br>
+                        <p></p>
+                        <b>Total Price :</b> <b class="price" id="total_price"></b> <br>
+                        <p class="description">{{cart.product.description}}</p>
+                        <button class="buy-now">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            <div class="billing-info">
+                <h2>Billing Information</h2>
+                <form action="">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    
+                    <label for="address">Address:</label>
+                    <input type="text" id="address" name="address" required>
+                    
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" name="phone" required>
+                    
+                    <button type="submit" class="submit-btn">Proceed to Payment</button>
+                </form>
+            </div>
+        </main>
+        <script src="{% static 'itembuy.js' %}" defer></script>
+    </body>
+    </html>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Items</title>
+    <link rel="stylesheet" href="{% static 'cartitem.css' %}">
+</head>
+<body>
+    
+    <div class="cart-container">
+        {% for each in products %}
+        <div class="cart-item">
+            <img src="{{ each.product.image }}" alt="" class="product-image">
+            <div class="product-details">
+                <p class="product-name"><b>Product name</b>: {{ each.product.name }}</p>
+                <p class="product-quantity"><b>Product quantity</b>: 
+                    <span id="quantity_{{ each.product.id }}">{{ each.quantity }}</span>
+                </p>
+                <a href="{% url 'buy_now' each.id %}">
+                    <button class="buy-now-btn">buy now</button>
+                </a>
+                <a href="{% url 'CartItemDelete' each.id %}">
+                    <button class="remove-btn">Remove</button>
+                </a>
+            </div>
+        </div>
+    {% endfor %}
+    
+    </div>
+    {% for message in messages %}
+    <script>
+        window.alert("{{ message }}");
+        window.location.href = '/';
+    </script>
+    {% endfor %}
+</body>
+</html>
